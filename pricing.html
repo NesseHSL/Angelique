@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing &amp; Booking | A Peters Electrolysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #1B2A7B;
+      --teal:      #2EB8C8;
+      --teal-mid:  #1E8FA0;
+      --teal-dark: #166879;
+      --light-bg:  #f4fafc;
+      --cream:     #fdfcfb;
+      --text:      #2d3748;
+      --text-light:#5a6a7a;
+      --border:    #d6eef3;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 48px; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links .btn-nav {
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: opacity 0.2s;
+    }
+    .nav-links .btn-nav:hover { opacity: 0.88; color: white; }
+
+    /* ── Page hero ── */
+    .page-hero {
+      padding: 140px 2rem 80px;
+      background: linear-gradient(160deg, #e8f6fa 0%, #f4fafc 40%, #eef1fa 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,184,200,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 540px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--navy));
+      border-radius: 2px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ── Main content ── */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 2rem;
+    }
+
+    /* ── Time pricing cards ── */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+    .price-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .price-card:hover { box-shadow: 0 8px 30px rgba(27,42,123,0.1); transform: translateY(-2px); }
+    .price-card .duration {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .price-card .duration-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1.25rem;
+      margin-top: 0.2rem;
+    }
+    .price-card .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Info blocks ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .info-block {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .info-block h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .hours-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-list li:last-child { border-bottom: none; }
+    .hours-list .day { font-weight: 500; color: var(--text); }
+    .hours-list .time { color: var(--text-light); font-weight: 300; font-size: 0.9rem; }
+    .payment-methods { display: flex; flex-direction: column; gap: 1rem; }
+    .payment-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+    .payment-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(46,184,200,0.15), rgba(27,42,123,0.1));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .payment-item strong { color: var(--text); font-weight: 500; display: block; }
+
+    /* ── Services reference ── */
+    .services-ref {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+    }
+    .services-ref h3 {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .services-ref .sub {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    .services-ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .service-col h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 0.75rem;
+    }
+    .service-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .service-col li {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      font-weight: 300;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .service-col li::before { content: '–'; position: absolute; left: 0; color: var(--teal); }
+
+    /* ── Consultation card ── */
+    .consultation-card {
+      background: linear-gradient(135deg, var(--navy), var(--teal-dark));
+      border-radius: 20px;
+      padding: 3rem;
+      color: white;
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    .consultation-card h3 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+    .consultation-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      font-weight: 300;
+      max-width: 480px;
+    }
+    .consultation-price {
+      text-align: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 1.5rem 2.5rem;
+      white-space: nowrap;
+    }
+    .consultation-price .price-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.5rem;
+    }
+    .consultation-price .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+      color: white;
+    }
+    .consultation-price .price-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.5rem;
+    }
+
+    /* ── Booking / Contact ── */
+    .booking-section {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 3rem;
+      text-align: center;
+    }
+    .booking-section .section-label { margin-bottom: 0.75rem; }
+    .booking-section h2 {
+      font-size: 2.2rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+    .booking-message {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 300;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.85;
+    }
+    .phone-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: white;
+      padding: 1.1rem 2.5rem;
+      border-radius: 50px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      transition: opacity 0.2s;
+    }
+    .phone-display:hover { opacity: 0.88; }
+    .phone-icon { font-size: 1.2rem; }
+    .booking-sub {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 1.25rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f1a4a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+    footer span { color: rgba(255,255,255,0.25); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .consultation-card { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .content-wrap { padding: 50px 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="images/logo.png" alt="A Peters Electrolysis" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="pricing.html" class="btn-nav">Pricing &amp; Booking</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="section-label">Transparent &amp; Affordable</p>
+      <div class="divider"></div>
+      <h1>Pricing &amp; Booking</h1>
+      <p>All pricing is listed per session. Prices shown are subject to change — contact Angelique for the most up-to-date rates.</p>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+
+    <!-- Consultation -->
+    <div class="consultation-card">
+      <div>
+        <h3>Start with a free consultation</h3>
+        <p>Your first visit includes a full consultation to discuss your treatment options and build a personalised plan. It's complimentary when you proceed with treatment — or just $20 if you decide it's not for you (refunded at your first appointment).</p>
+      </div>
+      <div class="consultation-price">
+        <div class="price-label">Consultation fee</div>
+        <div class="price-amount">$20</div>
+        <div class="price-note">Refunded at your first appointment</div>
+      </div>
+    </div>
+
+    <!-- Time-based pricing -->
+    <p class="section-label" style="margin-bottom:0.5rem;">Session rates</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);font-weight:400;margin-bottom:0.75rem;">Priced by time, not by area</h2>
+    <p style="font-size:0.95rem;color:var(--text-light);font-weight:300;margin-bottom:2rem;max-width:560px;">Every treatment is tailored to you. Rather than charging per body area, Angelique charges by session length — so you only pay for the time you need.</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="duration">15</div>
+        <div class="duration-label">minutes</div>
+        <div class="price">$38</div>
+      </div>
+      <div class="price-card">
+        <div class="duration">30</div>
+        <div class="duration-label">minutes</div>
+        <div class="price">$64</div>
+      </div>
+      <div class="price-card">
+        <div class="duration">45</div>
+        <div class="duration-label">minutes</div>
+        <div class="price">$76</div>
+      </div>
+      <div class="price-card">
+        <div class="duration">60</div>
+        <div class="duration-label">minutes</div>
+        <div class="price">$90</div>
+      </div>
+    </div>
+
+    <!-- Availability & Payment -->
+    <div class="info-grid">
+      <div class="info-block">
+        <h3>Availability</h3>
+        <ul class="hours-list">
+          <li>
+            <span class="day">Tuesday</span>
+            <span class="time">Afternoons &amp; early evenings</span>
+          </li>
+          <li>
+            <span class="day">Wednesday</span>
+            <span class="time">Afternoons &amp; early evenings</span>
+          </li>
+          <li>
+            <span class="day">Thursday</span>
+            <span class="time">Mornings &amp; afternoons</span>
+          </li>
+        </ul>
+      </div>
+      <div class="info-block">
+        <h3>Payment</h3>
+        <div class="payment-methods">
+          <div class="payment-item">
+            <div class="payment-icon">💵</div>
+            <div><strong>Cash</strong>Always welcome.</div>
+          </div>
+          <div class="payment-item">
+            <div class="payment-icon">📝</div>
+            <div><strong>Personal check</strong>Accepted.</div>
+          </div>
+          <div class="payment-item">
+            <div class="payment-icon">💳</div>
+            <div><strong>Credit &amp; debit cards</strong>Accepted with a 3% processing fee.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking section -->
+    <div class="booking-section" style="margin-bottom:4rem;">
+      <p class="section-label">Book an appointment</p>
+      <div class="divider"></div>
+      <h2>Ready to begin?</h2>
+      <p class="booking-message">If you have any questions, or to book an appointment, please message us your name, the service you're interested in, and your question — and we will come back to you as soon as possible (generally within 24 hours).</p>
+      <a href="tel:5702401355" class="phone-display">
+        <span class="phone-icon">📞</span>
+        570-240-1355
+      </a>
+      <p class="booking-sub">By appointment only &nbsp;·&nbsp; Gettysburg, PA 17325</p>
+    </div>
+
+    <!-- Services reference -->
+    <div class="services-ref">
+      <h3>Areas we treat</h3>
+      <p class="sub">Electrolysis can treat virtually any area of the face or body. Not sure if your area is covered? Just ask.</p>
+      <div class="services-ref-grid">
+        <div class="service-col">
+          <h4>Face &amp; Neck</h4>
+          <ul>
+            <li>Hairline &amp; sideburns</li>
+            <li>Eyebrows</li>
+            <li>Cheeks</li>
+            <li>Chin</li>
+            <li>Upper lip &amp; lips</li>
+            <li>Neck — front &amp; back</li>
+          </ul>
+        </div>
+        <div class="service-col">
+          <h4>Body</h4>
+          <ul>
+            <li>Arms &amp; underarms</li>
+            <li>Breasts</li>
+            <li>Belly</li>
+            <li>Legs</li>
+            <li>Fingers &amp; toes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 A Peters Electrolysis &nbsp;<span>·</span>&nbsp; Gettysburg, PA &nbsp;<span>·</span>&nbsp; All rights reserved</p>
+  </footer>
+
+</body>
+</html>

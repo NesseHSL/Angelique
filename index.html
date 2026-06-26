@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Peters Electrolysis | Permanent Hair Removal, Gettysburg PA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #1B2A7B;
+      --teal:      #2EB8C8;
+      --teal-mid:  #1E8FA0;
+      --teal-dark: #166879;
+      --light-bg:  #f4fafc;
+      --cream:     #fdfcfb;
+      --text:      #2d3748;
+      --text-light:#5a6a7a;
+      --border:    #d6eef3;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 48px; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links .btn-nav {
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: opacity 0.2s;
+    }
+    .nav-links .btn-nav:hover { opacity: 0.88; color: white; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 2rem 80px;
+      background-image:
+        linear-gradient(160deg, rgba(232,246,250,0.82) 0%, rgba(244,250,252,0.78) 40%, rgba(238,241,250,0.85) 100%),
+        url('https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?fm=jpg&q=80&w=2400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 60%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -150px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,184,200,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,42,123,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-logo { height: 420px; margin: 0 auto 2rem; }
+    .hero h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--teal-dark); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: var(--navy); color: white; }
+
+    /* ── Section base ── */
+    section { padding: 100px 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--navy));
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── About ── */
+    #about { background: white; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-image-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, #d6eef3, #e8f0fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .about-image-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .about-image-placeholder {
+      text-align: center;
+      color: var(--text-light);
+      padding: 2rem;
+    }
+    .about-image-placeholder span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+    .about-image-placeholder p { font-size: 0.85rem; opacity: 0.6; }
+    .about-text p { margin-bottom: 1.25rem; color: var(--text-light); font-weight: 300; }
+    .credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .credential-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .credential-item::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    /* ── Process ── */
+    #process { background: var(--light-bg); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .step-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .step-card h3 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .step-card p { font-size: 0.92rem; color: var(--text-light); font-weight: 300; }
+
+    /* ── Services ── */
+    #services { background: white; }
+    .services-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    .service-areas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .service-group {
+      background: var(--light-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+    .service-group h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .service-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .service-group li {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      padding-left: 1.25rem;
+      position: relative;
+      font-weight: 300;
+    }
+    .service-group li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+    .modalities-strip {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, var(--navy), var(--teal-dark));
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .modalities-strip h3 {
+      font-size: 1.4rem;
+      font-weight: 300;
+      white-space: nowrap;
+    }
+    .modality-tags { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .modality-tag {
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 50px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── Testimonials ── */
+    #testimonials { background: var(--light-bg); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      line-height: 0.5;
+      color: var(--teal);
+      opacity: 0.5;
+    }
+    .testimonial-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .testimonial-author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+    }
+
+    /* ── FAQ ── */
+    #faq { background: white; }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .faq-list { margin-top: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--teal);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      padding-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ── Contact ── */
+    #contact {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--teal-dark) 100%);
+      color: white;
+    }
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #contact .section-label { color: rgba(255,255,255,0.6); }
+    #contact .section-title { color: white; }
+    .contact-message {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+    }
+    .contact-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .contact-phone {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: white;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .contact-card a.contact-phone:hover { opacity: 0.8; }
+    .contact-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+    }
+    .contact-address {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f1a4a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+    footer span { color: rgba(255,255,255,0.25); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .services-intro-grid,
+      .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .service-areas { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .modalities-strip { flex-direction: column; gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 70px 1.25rem; }
+      .hero-logo { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#home">
+        <img src="images/logo.png" alt="A Peters Electrolysis" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="pricing.html" class="btn-nav">Pricing &amp; Booking</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <img class="hero-logo" src="images/logo.png" alt="A Peters Electrolysis" />
+      <h1>Your beauty, <em>revealed.</em></h1>
+      <p>Permanent hair removal by Angelique Peters, CPE — serving Gettysburg and Adams County, PA for over 125 years of proven electrolysis expertise.</p>
+      <div class="hero-btns">
+        <a href="pricing.html" class="btn-primary">View Pricing &amp; Book</a>
+        <a href="#about" class="btn-outline">Meet Angelique</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image-wrap">
+          <img src="images/angelique-photo.png" alt="Angelique Peters, CPE" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">About Angelique</p>
+          <div class="divider"></div>
+          <h2 class="section-title">Expert care in a warm, private setting</h2>
+          <p>Angelique Peters is a Certified Professional Electrologist (CPE) with extensive training across all modalities of electrolysis. Her practice is built on the belief that every client deserves personalised, meticulous attention — in a space that feels comfortable, calm, and welcoming.</p>
+          <p>Sessions take place in the privacy of her Gettysburg office, where she takes the time to understand your individual needs and build a treatment plan tailored to you. Electrolysis with Angelique is safe for everyone, regardless of age or gender.</p>
+          <div class="credentials">
+            <div class="credential-item">Certified by the International Board of Electrologists</div>
+            <div class="credential-item">Graduate of the Electrology Institute of New England</div>
+            <div class="credential-item">Member, American Electrology Association (AEA)</div>
+            <div class="credential-item">Advanced training in all electrolysis modalities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="section-inner">
+      <p class="section-label">How it works</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Your journey to smooth, hair-free skin</h2>
+      <p class="section-intro">Electrolysis is the only proven method of permanent hair removal — and with Angelique, every step is comfortable, clear, and personal.</p>
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Your Consultation</h3>
+          <p>Your first visit begins with a thorough consultation to discuss the treatment options and the area to be treated. Together, you'll create a personalised plan. The consultation is complimentary if you proceed with treatment, or $20 if not — refunded at your first appointment.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Your Treatments</h3>
+          <p>Treatments are scheduled to suit you — most clients visit weekly. After the initial clearing of the area, sessions become less frequent and shorter. Angelique's technique is as fast, effective, and painless as possible.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Lasting Results</h3>
+          <p>Because hair grows in cycles, consistent scheduling is key to permanent results. Over time, you'll see less and less regrowth — until the treated area is permanently clear. The freedom is worth it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label">Treatment areas</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Wherever you need it</h2>
+      <p class="section-intro">Electrolysis can treat virtually any area of the face or body. Angelique works with each client to create a plan that fits their individual goals.</p>
+      <div class="service-areas">
+        <div class="service-group">
+          <h3>Face &amp; Neck</h3>
+          <ul>
+            <li>Hairline &amp; sideburns</li>
+            <li>Eyebrows</li>
+            <li>Cheeks</li>
+            <li>Chin</li>
+            <li>Upper lip &amp; lips</li>
+            <li>Neck (front &amp; back)</li>
+          </ul>
+        </div>
+        <div class="service-group">
+          <h3>Body</h3>
+          <ul>
+            <li>Arms &amp; underarms</li>
+            <li>Breasts</li>
+            <li>Belly</li>
+            <li>Legs</li>
+            <li>Fingers &amp; toes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modalities-strip">
+        <h3>Techniques offered</h3>
+        <div class="modality-tags">
+          <span class="modality-tag">Galvanic</span>
+          <span class="modality-tag">Short Wave</span>
+          <span class="modality-tag">The Blend</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <p class="section-label">Client stories</p>
+      <div class="divider"></div>
+      <h2 class="section-title">What clients say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>I cannot speak highly enough of Angelique. She has been a blessing to me.</p>
+          <div class="testimonial-author">Kimberly Pasko — Dalton, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>This is a real confidence builder. It's the single best thing I've ever done for myself.</p>
+          <div class="testimonial-author">Debbie — Tunkhannock, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>I look forward to my treatments. Angelique is very professional, clean, and accommodating.</p>
+          <div class="testimonial-author">Karen P. — Clifford, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>Now my face is smooth, soft, and hair-free where I want it to be.</p>
+          <div class="testimonial-author">Helen — Wysox, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>After a few treatments with Angelique, I began to have a feeling of freedom... of lightness.</p>
+          <div class="testimonial-author">N.B. — Shavertown, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p>I noticed a difference after the first appointment. My skin feels so smooth.</p>
+          <div class="testimonial-author">Denise — Tunkhannock, PA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="faq-layout">
+        <div>
+          <p class="section-label">FAQ</p>
+          <div class="divider"></div>
+          <h2 class="section-title">Your questions, answered</h2>
+          <p class="section-intro" style="margin-top:1rem;">Everything you need to know before your first visit — and what to expect along the way.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">What happens at my first visit?</button>
+            <div class="faq-answer">
+              <p>Your first visit begins with a consultation. We'll go over the treatment options and the area to be treated, and create a personalised plan. The consultation is complimentary if you proceed with treatment, or $20 if not — refunded at your first appointment.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How many treatments will I need?</button>
+            <div class="faq-answer">
+              <p>The number of treatments varies by individual, depending on hair growth cycles, hair quality, and previous removal methods. Consistent scheduling is the most important factor in achieving permanent results.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How often should I come in?</button>
+            <div class="faq-answer">
+              <p>Sessions may occur every 3–4 days depending on the area and your skin's response, though most clients prefer weekly visits. After the initial clearing, treatments become less frequent and shorter in duration.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Is electrolysis painful?</button>
+            <div class="faq-answer">
+              <p>Most people find it to be relatively painless. Some experience mild discomfort or a sensation of heat, which can be managed with a topical cream beforehand, an over-the-counter pain reliever, or simply avoiding caffeine before your appointment.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What about my skin afterwards?</button>
+            <div class="faq-answer">
+              <p>Some redness and slight swelling are normal and temporary. Applying an ice pack (wrapped in a damp towel) for 15–20 seconds at a time over 10–20 minutes usually resolves this quickly. Any irritation will typically disappear within a few days.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How does electrolysis compare to laser?</button>
+            <div class="faq-answer">
+              <p>Electrolysis has been the gold standard for over 125 years and is the only proven method of permanent hair removal. Unlike laser, which reduces growth and doesn't work for all skin and hair types, electrolysis is effective for everyone — regardless of hair or skin colour.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <p class="section-label">Get in touch</p>
+        <div class="divider" style="margin: 0 auto 1.5rem;"></div>
+        <h2 class="section-title">Ready to get started?</h2>
+        <p class="contact-message">If you have any questions, or to book an appointment, please message us your name, the service you're interested in, and your question — and we will come back to you as soon as possible (generally within 24 hours).</p>
+        <div class="contact-card">
+          <p>Call or text us on</p>
+          <a href="tel:5702401355" class="contact-phone">570-240-1355</a>
+          <div class="contact-note">By appointment only — hours are flexible to suit you.</div>
+        </div>
+        <p class="contact-address">
+          395 Buford Avenue, Suite 4<br/>
+          Gettysburg, PA 17325
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 A Peters Electrolysis &nbsp;<span>·</span>&nbsp; Gettysburg, PA &nbsp;<span>·</span>&nbsp; All rights reserved</p>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
